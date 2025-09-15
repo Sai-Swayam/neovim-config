@@ -1,18 +1,13 @@
 return {
   'saghen/blink.cmp',
   dependencies = { 'rafamadriz/friendly-snippets' },
-
+  event = "InsertEnter",
   version = '1.*',
 
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
 
   opts = {
-    -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
-    -- 'super-tab' for mappings similar to vscode (tab to accept)
-    -- 'enter' for enter to accept
-    -- 'none' for no mappings
-    --
     -- All presets have the following mappings:
     -- C-space: Open menu or open docs if already open
     -- C-n/C-p or Up/Down: Select next/previous item
@@ -22,17 +17,8 @@ return {
     -- See :h blink-cmp-config-keymap for defining your own keymap
     keymap = { preset = 'default' },
 
-    -- appearance = {
-    --   -- highlight_ns = vim.api.nvim_create_namespace('blink_cmp'),
-    --   -- use_nvim_cmp_as_default = false,
-    --   nerd_font_variant = 'mono',
-    -- },
-
     appearance = {
       highlight_ns = vim.api.nvim_create_namespace('blink_cmp'),
-      -- Sets the fallback highlight groups to nvim-cmp's highlight groups
-      -- Useful for when your theme doesn't support blink.cmp
-      -- Will be removed in a future release
       use_nvim_cmp_as_default = false,
       -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
       -- Adjusts spacing to ensure icons are aligned
@@ -83,10 +69,10 @@ return {
 
         draw = {
           padding = { 0, 1 },
-          width = { fill = true, min = 10 },
+          -- width = { fill = true, min = 10 },
           -- gap = 1,
           -- columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
-          columns = { { "kind_icon" }, { "label" }, {"kind"} },
+          columns = { { "kind_icon" }, { "label" }, { "kind" } },
           components = {
             kind_icon = {
               -- ellipsis = true,

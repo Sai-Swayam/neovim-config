@@ -1,10 +1,15 @@
 return { {
 	"catppuccin/nvim",
 	name = "catppuccin",
-	-- priority = 1000,
+	priority = 1000,
 	config = function()
 		require('catppuccin').setup {
 			no_italic = true,
+			transparent_background = true,
+			float = {
+				transparent = true, -- enable transparent floating windows
+				solid = false,  -- use solid styling for floating windows, see |winborder|
+			},
 			color_overrides = {
 				all = {
 					-- rosewater = '#f66151',
@@ -30,18 +35,23 @@ return { {
 					-- surface2 = '#4f4f4f',
 					-- surface1 = '#3e3e3e',
 					-- surface0 = '#2e2e2e',
+
 					-- base = '#1E1E1E',
 					-- mantle = '#1A1A1A',
-					-- crust = '#101010'
-					--
-					base = '#000000',
-					mantle = '#000000',
-					crust = '#000000'
+					-- crust = '#000000'
+
+					-- crust = '#101010',
+					-- base = '#101010',
+					-- mantle = '#101010',
+
+					base = "#0b0b12",
+					mantle = "#11111a",
+					crust = "#191926",
 				}
 			},
 			integrations = {
 				telescope = {
-					enabled = false,
+					enabled = true,
 					style = "nvchad",
 				},
 				dropbar = {
@@ -51,7 +61,12 @@ return { {
 				blink_cmp = {
 					enabled = true,
 					style = 'bordered',
-				}
+				},
+				bufferline = {
+					enabled = true,
+				},
+				flash = true,
+				mason = true,
 			},
 
 
@@ -63,9 +78,9 @@ return { {
 					ColorColumn = { bg = '#252525' },
 					Visual = { bg = colors.surface1 },
 					MsgArea = { fg = colors.subtext0 },
-					TabLine = { bg = colors.mantle },
-					TabLineFill = { bg = colors.mantle },
-					TabLineSel = { fg = colors.subtext0, bg = colors.base },
+					-- TabLine = { bg = colors.red },
+					-- TabLineFill = { bg = 'NONE' },
+					-- TabLineSel = { fg = colors.red, bg = colors.red },
 
 					GitSignsAdd = { fg = '#467555' },
 					GitSignsChange = { fg = '#856f3a' },
@@ -98,7 +113,17 @@ return { {
 					Special = { fg = colors.overlay2 },
 					SpecialChar = { fg = colors.overlay2 },
 
-					-- blink_cmp custom_highlights
+					-- -- barbar custom highlights
+					-- BufferOffset = { fg = "#834455", bg = "#2234E2" },	
+					-- BufferScrollArrow = { fg = "#C3E88D", bg = "#33d17a" },	
+					-- BufferTabpageFill = { fg = "NONE", bg = colors.base },	
+					-- BufferTabpages = { fg = "", bg = "#0634dc" },	
+					-- BufferTabpagesSep = { fg = "#0634dc", bg = "#123456" },
+
+
+
+					-- blink_cmp custom highlights
+
 					BlinkCmpMenu = { fg = "#C5CDD9", bg = "#22252A" },
 					BlinkCmpMenuBorder = { fg = "#C3E88D", bg = "#9FBD73" },
 					BlinkCmpMenuSelection = { bg = "#858585", fg = "NONE" },
@@ -113,7 +138,7 @@ return { {
 
 					BlinkCmpKindField = { fg = colors.text, bg = colors.red },
 					BlinkCmpKindProperty = { fg = colors.text, bg = colors.red },
-					BlinkCmpKindEvent = { fg = colors.text, bg = colors.red},
+					BlinkCmpKindEvent = { fg = colors.text, bg = colors.red },
 
 					BlinkCmpKindText = { fg = colors.text, bg = colors.green },
 					BlinkCmpKindEnum = { fg = colors.text, bg = colors.green },
