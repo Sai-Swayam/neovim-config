@@ -10,6 +10,8 @@ return {
         go = { "goimports", "gofmt" },
         c = { 'clang_format' },
         javascript = { "prettierd", "prettier", stop_after_first = true },
+        html = { "prettierd", "prettier" },
+        css = { "prettierd", "prettier" }
       },
       formatters = {
         clang_format = {

@@ -27,6 +27,9 @@ return {
         pickers = {
           find_files = {
             theme = "ivy"
+          },
+          colorscheme = {
+            enable_preview = true,
           }
         },
         extensions = {
@@ -50,19 +53,20 @@ return {
 
       require('telescope').load_extension('fzf')
 
-      vim.keymap.set('n', '<leader>ls', require('telescope.builtin').find_files,
+      local builtin = require('telescope.builtin')
+      vim.keymap.set('n', '<leader>ls', builtin.find_files,
         { desc = 'List files in current directory' })
-      vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = 'Find recently opened files' })
-      vim.keymap.set('n', '<leader>gs', require('telescope.builtin').live_grep, { desc = 'Find string in pwd' })
-      vim.keymap.set('n', '<leader>gw', require('telescope.builtin').grep_string,
+      vim.keymap.set('n', '<leader>?', builtin.oldfiles, { desc = 'Find recently opened files' })
+      vim.keymap.set('n', '<leader>gs', builtin.live_grep, { desc = 'Find string in pwd' })
+      vim.keymap.set('n', '<leader>th', builtin.help_tags, { desc = 'Telescope help' })
+      vim.keymap.set('n', '<leader>gw', builtin.grep_string,
         { desc = 'Find string in current file' })
-      vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
+      vim.keymap.set('n', '<leader><space>', builtin.buffers, { desc = '[ ] Find existing buffers' })
       vim.keymap.set('n', '<leader>en', function()
-        require('telescope.builtin').find_files {
+        builtin.find_files {
           cwd = vim.fn.stdpath("config")
         }
       end)
-
 
       require "config.telescope.multigrep".setup()
     end

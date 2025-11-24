@@ -47,6 +47,7 @@ return {
         Constant = "󰏿",
         Struct = "󰙅",
         Event = "",
+        -- Event = "⚡",
         Operator = "󰆕",
         TypeParameter = "",
       },

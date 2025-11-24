@@ -33,11 +33,12 @@ return {
       scope = {
         highlight = highlight,
         show_start = false,
-        show_end = false,
+        -- show_end = false,
       },
       indent = {
         char = "▏", -- This is a slightly thinner char than the default one, check :help ibl.config.indent.char
-      }, }
+      },
+    }
 
     hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
   end

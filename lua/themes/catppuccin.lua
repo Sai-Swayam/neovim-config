@@ -7,8 +7,8 @@ return { {
 			no_italic = true,
 			transparent_background = true,
 			float = {
-				transparent = true, -- enable transparent floating windows
-				solid = false,  -- use solid styling for floating windows, see |winborder|
+				transparent = false, -- enable transparent floating windows
+				solid = false,   -- use solid styling for floating windows, see |winborder|
 			},
 			color_overrides = {
 				all = {
@@ -51,7 +51,7 @@ return { {
 			},
 			integrations = {
 				telescope = {
-					enabled = true,
+					enabled = false,
 					style = "nvchad",
 				},
 				dropbar = {
@@ -65,8 +65,18 @@ return { {
 				bufferline = {
 					enabled = true,
 				},
+				native_lsp = {
+					enabled = true,
+					underlines = {
+						errors = { "undercurl" },
+						hints = { "undercurl" },
+						warnings = { "undercurl" },
+						information = { "undercurl" },
+					},
+				},
 				flash = true,
 				mason = true,
+				treesitter = true,
 			},
 
 
@@ -82,9 +92,6 @@ return { {
 					-- TabLineFill = { bg = 'NONE' },
 					-- TabLineSel = { fg = colors.red, bg = colors.red },
 
-					GitSignsAdd = { fg = '#467555' },
-					GitSignsChange = { fg = '#856f3a' },
-					GitSignsDelete = { fg = '#753b34' },
 					TelescopeBorder = { fg = colors.subtext0 },
 
 					Constant = { fg = colors.blue },
@@ -113,28 +120,19 @@ return { {
 					Special = { fg = colors.overlay2 },
 					SpecialChar = { fg = colors.overlay2 },
 
-					-- -- barbar custom highlights
-					-- BufferOffset = { fg = "#834455", bg = "#2234E2" },	
-					-- BufferScrollArrow = { fg = "#C3E88D", bg = "#33d17a" },	
-					-- BufferTabpageFill = { fg = "NONE", bg = colors.base },	
-					-- BufferTabpages = { fg = "", bg = "#0634dc" },	
-					-- BufferTabpagesSep = { fg = "#0634dc", bg = "#123456" },
-
-
+					-- NormalFloat = { fg = "#000000", bg = "#C3E88D" },
+					FloatBorder = { fg = colors.text, bg = colors.mantle },
+					LazyNormal = { fg = colors.text, bg = colors.base },
+					MasonNormal = { fg = colors.text, bg = colors.base },
 
 					-- blink_cmp custom highlights
 
-					BlinkCmpMenu = { fg = "#C5CDD9", bg = "#22252A" },
+					-- BlinkCmpMenu = { fg = "#C5CDD9", bg = "#22252A" },
+					BlinkCmpMenu = { fg = colors.text, bg = colors.base },
 					BlinkCmpMenuBorder = { fg = "#C3E88D", bg = "#9FBD73" },
 					BlinkCmpMenuSelection = { bg = "#858585", fg = "NONE" },
 					BlinkCmpScrollBarThumb = { bg = "#858585", fg = "NONE" },
 					BlinkCmpScrollBarGutter = { fg = "NONE", bg = "#2E2E2E" },
-					-- BlinkCmpLabel = { fg = "#C3E88D", bg = "#9FBD73" },
-					-- BlinkCmpLabelDeprecated = { fg = "#C3E88D", bg = "#9FBD73" },
-					-- BlinkCmpLabelMatch = { fg = "#C3E88D", bg = "#9FBD73" },
-					-- BlinkCmpLabelDetail = { fg = "#C3E88D", bg = "#9FBD73" },
-					-- BlinkCmpLabelDescription = { fg = "#C3E88D", bg = "#9FBD73" },
-					-- BlinkCmpKind = { fg = "#C3E88D", bg = "#9FBD73" },
 
 					BlinkCmpKindField = { fg = colors.text, bg = colors.red },
 					BlinkCmpKindProperty = { fg = colors.text, bg = colors.red },
@@ -170,20 +168,37 @@ return { {
 					BlinkCmpKindTypeParameter = { fg = colors.text, bg = colors.teal },
 
 
-					BlinkCmpSource = { fg = "#C3E88D", bg = "#9FBD73" },
-					BlinkCmpGhostText = { fg = "#C3E88D", bg = "#9FBD73" },
-					BlinkCmpDoc = { fg = "#C3E88D", bg = "#9FBD73" },
-					BlinkCmpDocBorder = { fg = "#C3E88D", bg = "#9FBD73" },
-					BlinkCmpDocSeparator = { fg = "#C3E88D", bg = "#9FBD73" },
-					BlinkCmpDocCursorLine = { fg = "#C3E88D", bg = "#9FBD73" },
-					BlinkCmpSignatureHelp = { fg = "#C3E88D", bg = "#9FBD73" },
-					BlinkCmpSignatureHelpBorder = { fg = "#C3E88D", bg = "#9FBD73" },
-					BlinkCmpSignatureHelpActiveParameter = { fg = "#C3E88D", bg = "#9FBD73" },
+					-- Diagnostic
+					DiagnosticFloatingError     = { fg = "#ed8796", bg = "NONE" },
+					DiagnosticError             = { fg = "#ed8796", bg = "NONE" },
+					DiagnosticFloatingWarn      = { fg = "#eed49f", bg = "NONE" },
+					DiagnosticWarn              = { fg = "#eed49f", bg = "NONE" },
+					DiagnosticFloatingInfo      = { fg = "#91d7e3", bg = "NONE" },
+					DiagnosticInfo              = { fg = "#91d7e3", bg = "NONE" },
+					DiagnosticFloatingHint      = { fg = "#8bd5ca", bg = "NONE" },
+					DiagnosticHint              = { fg = "#8bd5ca", bg = "NONE" },
+					DiagnosticFloatingOk        = { fg = "#a6da95", bg = "NONE" },
+					DiagnosticOk                = { fg = "#a6da95", bg = "NONE" },
+					DiagnosticVirtualTextError  = { fg = "#ed8796", bg = "NONE" },
+					DiagnosticVirtualTextWarn   = { fg = "#eed49f", bg = "NONE" },
+					DiagnosticVirtualTextInfo   = { fg = "#91d7e3", bg = "NONE" },
+					DiagnosticVirtualTextHint   = { fg = "#8bd5ca", bg = "NONE" },
+					DiagnosticVirtualTextOk     = { fg = "#a6da95", bg = "NONE" },
+					DiagnosticVirtualLinesError = { fg = "#ed8796", bg = "NONE" },
+					DiagnosticVirtualLinesWarn  = { fg = "#eed49f", bg = "NONE" },
+					DiagnosticVirtualLinesInfo  = { fg = "#91d7e3", bg = "NONE" },
+					DiagnosticVirtualLinesHint  = { fg = "#8bd5ca", bg = "NONE" },
+					DiagnosticVirtualLinesOk    = { fg = "#a6da95", bg = "NONE" },
+					DiagnosticSignError         = { fg = "#ed8796", bg = "NONE" },
+					DiagnosticSignWarn          = { fg = "#eed49f", bg = "NONE" },
+					DiagnosticSignInfo          = { fg = "#91d7e3", bg = "NONE" },
+					DiagnosticSignHint          = { fg = "#8bd5ca", bg = "NONE" },
+					DiagnosticSignOk            = { fg = "#a6da95", bg = "NONE" },
+					DiagnosticUnnecessary       = { fg = "", bg = "" },
 				}
 			end,
 		}
 
 		vim.cmd 'colorscheme catppuccin-macchiato'
-		-- vim.cmd [[colorscheme catppuccin-latte]]
 	end,
 } }
