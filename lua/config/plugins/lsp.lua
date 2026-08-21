@@ -10,7 +10,7 @@ return {
     config = function()
       require("mason-lspconfig").setup({
         ensure_installed = { "lua_ls", "ts_ls", "clangd", "gopls", "powershell_es", "html", "cssls", "css_variables",
-          "cssmodules_ls", "prettierd", "tailwindcss", "eslint", },
+          "cssmodules_ls", "tailwindcss", "eslint", },
         automatic_enable = {
           -- needs external plugin
           exclude = { 'jdtls' }

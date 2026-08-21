@@ -1,8 +1,18 @@
 return {
   'saghen/blink.cmp',
-  dependencies = { 'rafamadriz/friendly-snippets' },
+  dependencies = {
+    'saghen/blink.lib',
+    -- optional: provides snippets for the snippet source
+    'rafamadriz/friendly-snippets',
+  },
+  build = function()
+    -- build the fuzzy matcher, optionally add a timeout to `pwait(timeout_ms)`
+    -- you can use `gb` in `:Lazy` to rebuild the plugin as needed
+    require('blink.cmp').build():pwait()
+  end,
   event = "InsertEnter",
   version = '1.*',
+  opts_extend = { "sources.default" },
 
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
@@ -77,8 +87,6 @@ return {
         }
       }
     },
-
-    opts_extend = { "sources.default" },
 
     completion = {
       -- No seleccionar por defecto, autoinsertar al seleccionar
@@ -188,6 +196,6 @@ return {
     },
 
     signature = { enabled = true },
-    fuzzy = { implementation = "prefer_rust_with_warning" },
+    fuzzy = { implementation = "rust" },
   },
 }
