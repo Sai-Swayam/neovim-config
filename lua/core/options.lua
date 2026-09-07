@@ -4,7 +4,7 @@ vim.opt.termguicolors = true
 
 vim.o.relativenumber = true
 vim.o.clipboard = "unnamedplus"
-vim.o.shell = "pwsh"
+vim.o.shell = "/bin/zsh"
 vim.o.tabstop = 4
 vim.o.ignorecase = true
 vim.o.smartcase = true

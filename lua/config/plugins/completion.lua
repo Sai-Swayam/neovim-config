@@ -3,6 +3,7 @@ return {
   dependencies = { 'rafamadriz/friendly-snippets' },
   event = "InsertEnter",
   version = '1.*',
+  opts_extend = { "sources.default" },
 
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
@@ -77,8 +78,6 @@ return {
         }
       }
     },
-
-    opts_extend = { "sources.default" },
 
     completion = {
       -- No seleccionar por defecto, autoinsertar al seleccionar

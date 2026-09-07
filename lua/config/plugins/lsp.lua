@@ -9,8 +9,8 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "ts_ls", "clangd", "gopls", "powershell_es", "html", "cssls", "css_variables",
-          "cssmodules_ls", "prettierd", "tailwindcss", "eslint", },
+        ensure_installed = { "lua_ls", "ts_ls", "clangd", "html", "cssls", "css_variables",
+          "cssmodules_ls", "tailwindcss", "eslint", },
         automatic_enable = {
           -- needs external plugin
           exclude = { 'jdtls' }
@@ -56,7 +56,7 @@ return {
         lua_ls = {},
         -- jdtls = {},
         clangd = {},
-        gopls = {},
+        -- gopls = {},
         html = {},
         cssls = {},
         css_variables = {},
@@ -68,14 +68,14 @@ return {
           end,
         },
         ts_ls = {},
-        powershell_es = {
-          filetypes = { "ps1", "psm1", "psd1" },
-          bundle_path = "~/AppData/Local/nvim-data/mason/packages/powershell-editor-services",
-          settings = { powershell = { codeFormatting = { Preset = 'OTBS' } } },
-          init_options = {
-            enableProfileLoading = false,
-          }
-        },
+        -- powershell_es = {
+        --   filetypes = { "ps1", "psm1", "psd1" },
+        --   bundle_path = "~/AppData/Local/nvim-data/mason/packages/powershell-editor-services",
+        --   settings = { powershell = { codeFormatting = { Preset = 'OTBS' } } },
+        --   init_options = {
+        --     enableProfileLoading = false,
+        --   }
+        -- },
       }
 
       for server, cfg in pairs(servers) do
