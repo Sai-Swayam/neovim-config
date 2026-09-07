@@ -3,6 +3,34 @@ return {
   event = "VeryLazy",
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
+    -- Indicate when code is formatted
+    local format_status = ""
+    local copilot_status = ""
+
+    _G.show_format_status = function()
+      format_status = "Formatted"
+      vim.defer_fn(function()
+        format_status = ""
+        require("lualine").refresh()
+      end, 1000)
+      require("lualine").refresh()
+    end
+
+    _G.show_copilot_autocomplete_status = function()
+      local status = vim.g.copilot_enabled
+      if status == false then
+        copilot_status = "Copilot Disabled"
+      else
+        copilot_status = "Copilot Enabled"
+      end
+      require("lualine").refresh()
+      vim.defer_fn(function()
+        copilot_status = ""
+      end, 1000)
+      require("lualine").refresh()
+    end
+
+
     local colors = {
       bg     = '#0b0b12',
       fg     = '#cad3f5',
@@ -54,12 +82,12 @@ return {
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         disabled_filetypes = {
-          statusline = {},
+          statusline = { 'snacks_dashboard' },
           winbar = {},
         },
         ignore_focus = {},
         always_divide_middle = true,
-        globalstatus = false,
+        globalstatus = true,
         refresh = {
           statusline = 1000,
           tabline = 1000,
@@ -108,7 +136,24 @@ return {
             },
           } },
 
-        lualine_c = { 'indent' },
+        lualine_c = {
+
+          {
+            function()
+              return format_status
+            end,
+            color = { fg = colors.green },
+          },
+
+          {
+            function()
+              return copilot_status
+            end,
+            color = { fg = colors.green },
+          }
+
+          -- 'indent'
+        },
 
         lualine_x = { {
           'filename',
@@ -156,6 +201,7 @@ return {
 
         lualine_z = {
           -- 'indent',
+
           'location',
           {
             function()

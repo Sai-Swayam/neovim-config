@@ -24,7 +24,7 @@ return {
         -- Header
         {
           text = " ",
-          padding = 7
+          padding = 1
         },
         {
           section = "header",
@@ -93,8 +93,8 @@ return {
         },
 
         --  Startup
-        { section = "startup",  padding = 1 },
-        { section = "terminal", cmd = "printf ' '", height = 10 },
+        -- { section = "startup", padding = 1 },
+        -- { section = "terminal", cmd = "printf ' '", height = 10 },
 
       },
       formats = {

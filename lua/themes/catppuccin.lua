@@ -44,7 +44,8 @@ return { {
 					-- base = '#101010',
 					-- mantle = '#101010',
 
-					base = "#0b0b12",
+					-- base = "#0b0b12",
+					base = "#181818",
 					mantle = "#11111a",
 					crust = "#191926",
 				}

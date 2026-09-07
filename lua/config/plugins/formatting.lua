@@ -15,7 +15,7 @@ return {
       },
       formatters = {
         clang_format = {
-          prepend_args = { '--style=file', '--fallback-style=GNU' },
+          prepend_args = { '--style=file:C:/Users/saisw/.clang-format', '--fallback-style=GNU' },
         },
         shfmt = {
           prepend_args = { '-i', '4' },
@@ -32,8 +32,12 @@ return {
       conform.format({
         lsp_fallback = true,
         async = false,
-        timeout_ms = 500
-      })
+        timeout_ms = 500,
+      }, function(err)
+        if not err then
+          _G.show_format_status()
+        end
+      end)
     end, { desc = "format file or range (in visual mode)" })
   end,
 }

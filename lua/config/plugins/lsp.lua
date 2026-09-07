@@ -51,11 +51,19 @@ return {
       --------------------------------------------------------------------------------------------------------------
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
+      local clangd_bin = vim.fn.stdpath('data') .. '/mason/bin/clangd'
 
       local servers = {
         lua_ls = {},
         -- jdtls = {},
-        clangd = {},
+        clangd = {
+          cmd = {
+            clangd_bin,
+            "--background-index",
+          },
+          filetypes = { "c", "cpp", "objc", "objcpp" },
+          root_dir = vim.fs.root(0, { "compile_commands.json", ".git" }),
+        },
         gopls = {},
         html = {},
         cssls = {},
