@@ -25,5 +25,6 @@ require("lazy").setup({
 		{ import = "config.plugins" },
 		-- colorscheme
 		{ import = "themes.catppuccin" },
+		-- { import = "themes.oxocarbon" },
 	},
 })

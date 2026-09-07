@@ -9,6 +9,8 @@ set("n", "<space><space>x", "<cmd>source %<CR>")
 set("n", "<space>x", ":.lua<CR>")
 set("v", "<space>x", ":lua<CR>")
 set("i", "<C-o>", "<Esc>o")
+set("n", "gg", "gg0")
+set("i", "<C-/>", "<Esc>gcc", { remap = true })
 
 -- Toggle transparency
 set("n", "<leader>tt", function()
@@ -16,6 +18,12 @@ set("n", "<leader>tt", function()
 	cat.options.transparent_background = not cat.options.transparent_background
 	cat.compile()
 	vim.cmd.colorscheme(vim.g.colors_name)
+end)
+
+-- Toggle copilot autocompletion
+set("n", "<leader>cp", function()
+	vim.g.copilot_enabled = not vim.g.copilot_enabled
+	_G.show_copilot_autocomplete_status()
 end)
 
 -- Oil
@@ -58,13 +66,16 @@ set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open floating diagnos
 set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 -- Terminal
-vim.api.nvim_set_keymap('t', '<C-space>', '<C-\\><C-n>', { noremap = true })
+-- vim.api.nvim_set_keymap('t', '<C-space>', '<C-\\><C-n>', { noremap = true })
+vim.api.nvim_set_keymap("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
 local job_id = 0
 set("n", "<space>tm", function()
-	vim.cmd.vnew()
+	-- vim.cmd.vnew()
+	vim.cmd.enew()
 	vim.cmd.term()
 	vim.cmd.wincmd("J")
-	vim.api.nvim_win_set_height(0, 5)
+	-- vim.api.nvim_win_set_height(0, 19)
+	vim.cmd.startinsert()
 	job_id = vim.bo.channel
 end)
 

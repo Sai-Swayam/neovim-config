@@ -1,6 +1,6 @@
 return {
   "github/copilot.vim",
-  enabled = true,
+  enabled = false,
   config = function()
     vim.g.copilot_enabled = true    -- disable copilot by default untile user enables it
     vim.g.copilot_no_tab_map = true -- Disable default tab mapping
