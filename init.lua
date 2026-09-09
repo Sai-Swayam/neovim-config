@@ -1,6 +1,7 @@
 require("core.options")
 require("core.keymaps")
 require("config.lazy")
+require("core.colorscheme")
 
 -- highlight yank
 vim.api.nvim_create_autocmd("TextYankPost", {
