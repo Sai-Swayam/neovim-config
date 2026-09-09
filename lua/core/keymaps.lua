@@ -12,14 +12,6 @@ set("i", "<C-o>", "<Esc>o")
 set("n", "gg", "gg0")
 set("i", "<C-/>", "<Esc>gcc", { remap = true })
 
--- Toggle transparency
-set("n", "<leader>tt", function()
-	local cat = require("catppuccin")
-	cat.options.transparent_background = not cat.options.transparent_background
-	cat.compile()
-	vim.cmd.colorscheme(vim.g.colors_name)
-end)
-
 -- Toggle copilot autocompletion
 set("n", "<leader>cp", function()
 	vim.g.copilot_enabled = not vim.g.copilot_enabled

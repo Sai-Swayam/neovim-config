@@ -77,8 +77,8 @@ return {
     require('lualine').setup {
       options = {
         icons_enabled = true,
-        -- theme = 'catppuccin',
-        theme = custom_theme,
+        theme = 'auto',
+        -- theme = custom_theme,
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         disabled_filetypes = {
@@ -142,14 +142,14 @@ return {
             function()
               return format_status
             end,
-            color = { fg = colors.green },
+            -- color = { fg = colors.green },
           },
 
           {
             function()
               return copilot_status
             end,
-            color = { fg = colors.green },
+            -- color = { fg = colors.green },
           }
 
           -- 'indent'

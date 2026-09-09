@@ -2,6 +2,7 @@ return
 {
 	"okaihe/okai",
 	lazy = false,
+	enabled = false,
 	priority = 1000,
 	config = function()
 		require("okai").setup({})
