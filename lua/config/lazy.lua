@@ -24,7 +24,9 @@ require("lazy").setup({
 		-- import your plugins
 		{ import = "config.plugins" },
 		-- colorscheme
-		{ import = "themes.catppuccin" },
-		-- { import = "themes.oxocarbon" },
+		{ import = "themes" },
 	},
+	rocks = {
+		enabled = false,
+	}
 })
