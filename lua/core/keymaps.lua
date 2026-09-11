@@ -18,6 +18,9 @@ set("n", "<leader>cp", function()
 	_G.show_copilot_autocomplete_status()
 end)
 
+-- Inspect highlight group
+set("n", "<leader>i", "<cmd>Inspect<CR>")
+
 -- Oil
 set("n", "-", "<cmd>Oil<CR>")
 
